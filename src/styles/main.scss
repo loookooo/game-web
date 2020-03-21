@@ -1,0 +1,59 @@
+ @import "./normalize.scss";
+ body {
+     background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582791550905&di=9e883b26f6fd1ab2d498579e8afdc6d6&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2018-09-21%2Fdcb933be12f6bc12c5d1f6b29f13cdda%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark) no-repeat;
+     background-size: 100% 725px;
+     overflow: hidden;
+     color: white;
+ }
+ 
+ ul {
+     padding: 0px;
+     margin: 0px;
+ }
+ 
+ .mybtn {
+     background: transparent;
+     color: white;
+     border: 0px;
+     outline: none;
+     cursor: pointer;
+     border: 1px solid white;
+ }
+ 
+ .mybtn:hover {
+     background: rgba(0, 0, 0, 0.5);
+ }
+ 
+ .mybg {
+     background: rgba(255, 255, 255, 0.5) !important;
+ }
+ 
+ .el-submenu__title i {
+     color: white!important;
+ }
+ 
+ .el-submenu__title:focus,
+ .el-submenu__title:hover {
+     outline: 0 !important;
+     background: rgba(0, 0, 0, 0.5) !important;
+ }
+ 
+ .el-notification {
+     background: rgba(0, 0, 0, 0.5)!important;
+     color: white!important;
+ }
+ 
+ .el-notification.right {
+     right: 8px!important;
+     margin-top: 55px;
+ }
+ 
+ .el-notification__title,
+ .el-icon-success,
+ .el-icon-error {
+     color: white!important;
+ }
+ 
+ .el-card__header {
+     background-color: rgba(0, 0, 0, 0.5);
+ }

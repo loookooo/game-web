@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <script src="three.js"></script>
+    <script>
+        //新建场景
+        var scene = new THREE.Scene();
+        //相机  PerspectiveCamera透视相机
+        //     第一个参数是视野角度（FOV）。视野角度就是无论在什么时候，你所能在显示器上看到的场景的范围，它的值是角度单位。
+        //     第二个参数是长宽比（aspect ratio）。 也就是你用一个物体的宽除以它的高的值。比如说，当你在一个宽屏电视上播放老电影时，
+        //         可以看到图像仿佛是被压扁的。
+        //     接下来的两个参数是近截面（near）和远截面（far）。 当物体某些部分比摄像机的远截面远或者比近截面近的时候，
+        //        该这些部分将不会被渲染到场景中。或许现在你不用担心这个值的影响，但未来为了获得更好的渲染性能，你将可以在你的应用程序里去设置它。
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var k = width / height;
+        var s = 200;
+        //var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
+        //设置相机位置
+        camera.position.set(200, 300, 200);
+        //设置相机指向的对象
+        camera.lookAt(scene.position);
+        //渲染器 页面呈现canvas元素
+        var renderer = new THREE.WebGLRenderer();
+        //渲染器尺寸  width height
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        //将元素添加至body下
+        document.body.appendChild(renderer.domElement);
+        //BoxGeometry立方体
+        var geometry = new THREE.BoxGeometry(100, 100, 100);
+        //MeshBasicMaterial材质的一种
+        var material = new THREE.MeshBasicMaterial({
+            color: 0xffffff
+        });
+
+        //Mesh网格
+        var cube = new THREE.Mesh(geometry, material);
+        //添加至场景 这时物体在 (0,0,0)坐标
+        scene.add(cube);
+        //默认情况下，当我们调用scene.add()的时候，物体将会被添加到(0,0,0)坐标。但将使得摄像机和立方体彼此在一起。
+
+        //光源
+        var point = new THREE.PointLight(0xffffff);
+        //光源位置
+        point.position.set(400, 200, 300);
+        //添加至场景
+        scene.add(point);
+        //环境光
+        var ambient = new THREE.AmbientLight(0x444444);
+        scene.add(ambient);
+        //渲染场景 60次/s
+        var animate = function() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.04;
+            cube.rotation.y += 0.04;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+
+</html>
