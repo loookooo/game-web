@@ -45,7 +45,10 @@ import { ref, reactive, computed, onMounted } from '@vue/composition-api';
             }, 1000);
         };
         //用户信息
-        const userinfo = reactive(root.$store.state.userinfo);
+        // const userinfo = reactive(root.$store.state.userinfo);
+		const userinfo = reactive({
+			username:'lk'
+		});
         //导航选中参数
         const activeIndex = ref('1');
         //退出登录

@@ -4,7 +4,7 @@
         <div class="main">
             <router-view></router-view>
         </div>
-        <homeFooter></homeFooter>
+        <homeFooter class="footer"></homeFooter>
     </div>
 </template>
 <script>
@@ -20,7 +20,11 @@ import homeFooter from './Components/Footer.vue';
 </script>
 <style lang="scss" scoped>
 .main {
-    
     margin:30px 0;
+}
+.footer {
+    position:fixed;
+    width: 100%;
+    bottom:0;
 }
 </style>

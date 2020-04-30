@@ -95,7 +95,13 @@ export default {
         //切换特效
         const changeActive = computed(()=>root.$store.state.changeActive);
         //用户信息
-        const userinfo = reactive(JSON.parse(JSON.stringify(root.$store.state.userinfo)));
+        // const userinfo = reactive(JSON.parse(JSON.stringify(root.$store.state.userinfo)));
+		const userinfo = reactive({
+			username:'lk123456',
+			password:'j8d023jr8e90sfu34jriow',
+			sex:'男',
+			createTime:'2019-12-12'
+		});
         //退出特效
         const outActive = computed(()=>root.$store.state.outActive);
         return {

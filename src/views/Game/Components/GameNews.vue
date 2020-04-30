@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-import { reactive, ref, computed } from '@vue/composition-api'
+import { reactive, computed } from '@vue/composition-api'
 export default {
     name:'gamenews',
     setup(props,{root}) {
@@ -29,9 +29,7 @@ export default {
         const gameActive = computed( ()=>root.$store.state.gamechangeActive );
         //轮播图列表
         const imglist = reactive([
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582906627853&di=501bf90e8f938ae9cce762400c00b46e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01176755c0b8fa6ac7253f367dab16.jpg',
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582906492724&di=feb90e5bc536295b1d813e8ceaeadb76&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F017775554c06f8000001bf726bca56.jpg',
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582906554717&di=75f2134c5fe7f45c80e605ee3e2002a9&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F36f68dac8d7aa5686d2f4c3bc8e6fc18ce1f5fed.jpg',
+             'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582906554717&di=75f2134c5fe7f45c80e605ee3e2002a9&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F36f68dac8d7aa5686d2f4c3bc8e6fc18ce1f5fed.jpg',
             'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582906515190&di=dc1cb20f106ef52b8d8cb610bc71f75a&imgtype=0&src=http%3A%2F%2Fbucket.mall.actoys.net%2Fdata%2Ffiles%2Fstore_643325%2Fgoods_47%2F201511161204079214.jpeg'
         ]);
         return {
@@ -73,7 +71,7 @@ $arrowFrom:rgba(0,0,0,0.5);
     border-right:4px solid transparent;
     .up {
         height:47%;
-        background:url('http://image.namedq.com/uploads/20180910/14/1536560019-VtRopcZfqg.jpg') no-repeat;
+        background:url('http://hbimg.b0.upaiyun.com/d3d07fa95ef03b5354cbcd6f0a7ba01ec94157d123fc4-Z8yzFH_fw658') no-repeat;
         background-position:center;
         margin-bottom: 2px;
     }
@@ -114,7 +112,7 @@ $arrowFrom:rgba(0,0,0,0.5);
     .down {
         margin-top: 2px;
         height: 47%;
-        background: url('http://image.namedq.com/uploads/20180910/14/1536560019-VtRopcZfqg.jpg') no-repeat;
+        background: url('http://img3.imgtn.bdimg.com/it/u=3893109520,3773061345&fm=26&gp=0.jpg') no-repeat;
         background-position: center;
     }
 }
