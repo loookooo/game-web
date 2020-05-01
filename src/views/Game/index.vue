@@ -12,11 +12,6 @@
                 background-color="transparent"
                 text-color="white"
                 class="el-menu-vertical-demo">
-
-                    <el-menu-item index="1" @click="changeGame({path:'/gamenews'},1)">
-                        <i class="el-icon-reading" style="color:white"></i>
-                        <span slot="title">游戏新闻</span>
-                    </el-menu-item>
                     <el-submenu :index="index+''" v-for="(item,index) in gamelist" :key="index">
                         <template slot="title">
                         <i :class="item.icon"></i>

@@ -70,10 +70,26 @@ const routes = [
         ],
       },
       {
+        path: "/review",
+        name: "游戏评测",
+        meta: {
+          index: 2,
+        },
+        component: () => import("views/Review/index.vue"),
+      },
+      {
+        path: "/manage",
+        name: "平台管理",
+        meta: {
+          index: 3,
+        },
+        component: () => import("views/Manage/index.vue"),
+      },
+      {
         path: "/personal",
         name: "个人中心",
         meta: {
-          index: 2,
+          index: 4,
         },
         component: () => import("views/Personal/index.vue"),
       },

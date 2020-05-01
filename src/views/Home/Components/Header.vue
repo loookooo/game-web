@@ -17,7 +17,7 @@
             <div class="myinfo">
                 欢迎{{userinfo.username}}玩家的到来~
             </div>
-            <el-menu-item index="3" class="active right" @click="loginOut">退出</el-menu-item>
+            <el-menu-item index="10" class="active right" @click="loginOut">退出</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -38,11 +38,12 @@ import { ref, reactive, computed, onMounted } from '@vue/composition-api';
             if(root.$router.currentRoute.path == item.path) return;
             if(root.$router.currentRoute.path == '/gamenews' && item.path == '/game') return;
             root.$store.commit('setChangeActive',true); //开启切换特效
-            setTimeout(() => {
-                root.$router.push(item.path);
+            root.$router.push(item.path);
                 root.$store.commit('setChangeActive',false); //关闭切换特效
                 return 'ok';
-            }, 1000);
+            // setTimeout(() => {
+                
+            // }, 1000);
         };
         //用户信息
         // const userinfo = reactive(root.$store.state.userinfo);
@@ -56,10 +57,11 @@ import { ref, reactive, computed, onMounted } from '@vue/composition-api';
             root.$store.commit('setOutActive',true); //开启退出特效
             clearToken();   //清楚token
             root.$notify({title: '退出成功',type: 'success'});
-            setTimeout(()=>{
-                root.$router.push('/login');
-                root.$store.commit('setOutActive',false);//关闭退出特效
-            },1000)
+            root.$router.push('/login');
+            root.$store.commit('setOutActive',false);//关闭退出特效
+            // setTimeout(()=>{
+                
+            // },1000)
         };
         return {
             activeIndex,

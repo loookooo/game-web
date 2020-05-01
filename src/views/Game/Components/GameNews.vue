@@ -112,7 +112,7 @@ $arrowFrom:rgba(0,0,0,0.5);
     .down {
         margin-top: 2px;
         height: 47%;
-        background: url('http://img3.imgtn.bdimg.com/it/u=3893109520,3773061345&fm=26&gp=0.jpg') no-repeat;
+        background: url('https://img.yxbao.com/photo/201905/30/1a7b48b35e.jpg') no-repeat;
         background-position: center;
     }
 }
