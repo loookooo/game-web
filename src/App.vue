@@ -14,9 +14,24 @@ $Black:rgba(0,0,0,0.5)!important;
 $Color:#fff!important;
 $None:transparent!important;
 * {
-  transition: all .3s;
+  // transition: all .3s;
 }
 #app {
+}
+.el-drawer__body>* {
+  color:black!important;
+}
+.el-drawer {
+  background:rgba(255,255,255,0.9)!important;
+}
+.el-input .el-input__count .el-input__count-inner {
+  background: $None;
+}
+.el-input .el-input__count {
+  color:$Color;
+}
+.el-form-item__error,.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before{
+  color:pink!important
 }
 .el-pagination.is-background .el-pager li {
   background:#ccc!important;

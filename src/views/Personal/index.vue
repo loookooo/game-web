@@ -83,7 +83,7 @@
           <el-radio v-model="infoForm.sex" label="女"></el-radio>
         </el-form-item>
         <el-form-item label="邮箱" label-width="50px">
-          <el-input v-model="infoForm.email" autocomplete="off"></el-input>
+          <el-input v-model="infoForm.email" autocomplete="off" maxlength="20"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
