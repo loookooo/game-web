@@ -18,6 +18,20 @@ $None:transparent!important;
 }
 #app {
 }
+.el-textarea__inner {
+  background: $Black;
+  color:$Color;
+}
+.el-select-dropdown__list {
+  background: $Black;
+}
+.el-select-dropdown__item {
+  color:$Color
+}
+.el-select-dropdown__item:hover {
+  color:$Black;
+  background:rgba(255,255,255,0.7)!important;
+}
 .el-drawer__body>* {
   color:black!important;
 }
@@ -31,7 +45,7 @@ $None:transparent!important;
   color:$Color;
 }
 .el-form-item__error,.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before{
-  color:pink!important
+  color:yellow!important
 }
 .el-pagination.is-background .el-pager li {
   background:#ccc!important;

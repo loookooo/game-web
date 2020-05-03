@@ -6,13 +6,16 @@
             <user-manage></user-manage>
           </el-tab-pane>
           <el-tab-pane label="评论管理">
-            <user-manage></user-manage>
+            <comment-manage></comment-manage>
           </el-tab-pane>
           <el-tab-pane label="资讯管理">
-            <user-manage></user-manage>
+            <info-manage></info-manage>
           </el-tab-pane>
           <el-tab-pane label="游戏管理">
-            <user-manage></user-manage>
+            <game-manage></game-manage>
+          </el-tab-pane>
+          <el-tab-pane label="排行管理">
+            <rank-manage></rank-manage>
           </el-tab-pane>
         </el-tabs>
     </el-card>
@@ -20,9 +23,13 @@
 </template>
 <script>
 import UserManage from './Components/userManage.vue';
+import CommentManage from './Components/commentManage.vue';
+import InfoManage from './Components/infoManage.vue';
+import GameManage from './Components/gameManage.vue';
+import RankManage from './Components/rankManage.vue';
 export default {
   components:{
-    UserManage
+    UserManage,CommentManage,InfoManage,GameManage,RankManage
   },
   data(){
     return {

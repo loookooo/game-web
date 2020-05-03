@@ -115,7 +115,7 @@ export default {
             {
                 value:'益智游戏',label:'益智游戏',
                 children:[{
-                    value:'推箱子',label:'推箱子',
+                    value:'打击板',label:'打击板',
                 },{
                     value:'连连看',label:'连连看',
                 }]

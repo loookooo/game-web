@@ -1,15 +1,14 @@
 <template>
     <div :class="['mandown wow animated',gameactive?'slideOutRight':'slideInRight']" data-wow-duration="0.5s">
         <div class="rules">
-           <ranking :rankingList="rankingList"></ranking>
-           <comment></comment>
+           <game-tab game="模型操作"></game-tab>
+           
         </div>
         <div id="mandown"></div>
     </div>
 </template>
 <script>
-import ranking from '@/components/ranking.vue';
-import comment from '@/components/comment.vue';
+import GameTab from '@/components/GameTab.vue';
 //--------------------
 // import * as THREE from 'three';
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -39,27 +38,12 @@ import { computed, onMounted, onBeforeUnmount, reactive } from '@vue/composition
 export default {
     name:'mandown',
     components:{
-        ranking,comment
+        GameTab
     },
     setup(props,{root}){
         const gameactive = computed(()=> root.$store.state.gamechangeActive); 
-        const rankingList = reactive([
-            { name:'小明', grade:999999999 },
-            { name:'AAAA', grade:100 },
-            { name:'loookooo', grade:100 },
-            { name:'132123123112123123', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-            { name:'小明', grade:100 },
-        ]);
         return {
-            gameactive, rankingList
+            gameactive
         }  
         //-----------
         // onMounted(() => {

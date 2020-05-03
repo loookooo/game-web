@@ -47,7 +47,7 @@ export default {
             {
                 name:'休闲游戏',icon:'el-icon-receiving',
                 children:[{
-                    name:'3D模型',
+                    name:'模型操作',
                     path:'/mandown'
                 },{
                     name:'飞机大战',
@@ -57,11 +57,11 @@ export default {
             {
                 name:'益智类游戏',icon:'el-icon-cpu',
                 children:[{
-                    name:'推箱子',
-                    path:''
+                    name:'打击板',
+                    path:'/gitBoard'
                 },{
                     name:'连连看',
-                    path:''
+                    path:'/keepLook'
                 }]
             }
         ]);

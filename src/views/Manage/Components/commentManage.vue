@@ -3,14 +3,14 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-input
-          placeholder="请输入姓名或邮箱来搜索"
+          placeholder="请输入用户或游戏来搜索"
           v-model="formName"
           clearable
           @input="handleCurrentChange()"
         ></el-input>
       </el-col>
       <el-col :span="12">
-        <el-button size="small" @click="display=true,displayText='添加用户',displayForm={sex:'男'}">添加用户</el-button>
+        <el-button size="small" @click="display=true,displayText='添加评论',displayForm={star:5}">添加评论</el-button>
       </el-col>
     </el-row>
 
@@ -25,17 +25,25 @@
           >{{scope.row.name}}</el-button>
         </template>
       </el-table-column>
-      <el-table-column prop="username" label="账号" width="180" align="center"></el-table-column>
-      <el-table-column prop="password" label="密码" align="center"></el-table-column>
-      <el-table-column prop="sex" label="性别" align="center" min-width="50px"></el-table-column>
-      <el-table-column prop="email" label="邮箱" align="center" min-width="120px"></el-table-column>
-      <el-table-column prop="autograph" label="签名" align="center"></el-table-column>
-      <el-table-column prop="createTime" label="注册时间" align="center"></el-table-column>
+      <el-table-column prop="game" label="游戏" width="180" align="center"></el-table-column>
+      <el-table-column prop="star" label="星级" align="center">
+        <template slot-scope="scope">
+          <el-rate
+            v-model="scope.row.star"
+            show-text
+            disabled
+            :texts="['差','差','良','良','优']"
+            :colors="colors"
+          ></el-rate>
+        </template>
+      </el-table-column>
+      <el-table-column prop="content" label="内容" align="center" min-width="150px"></el-table-column>
+      <el-table-column prop="createTime" label="评论时间" align="center" min-width="120px"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button
             size="small"
-            @click="display=true,displayText='编辑用户',displayForm={...scope.row}"
+            @click="display=true,displayText='编辑评论',displayForm={...scope.row}"
           >
             <i class="el-icon-edit"></i>
           </el-button>
@@ -58,23 +66,38 @@
     <el-dialog :title="displayText" :visible.sync="display" width="400px">
       <el-form :model="displayForm" :rules="rules" ref="ruleForm" label-width="60px">
         <el-form-item label="用户" prop="name">
-          <el-input v-model="displayForm.name"></el-input>
+            <el-select v-model="displayForm.name" placeholder="请选择用户">
+                <el-option
+                v-for="item in userSelects"
+                :key="item.name"
+                :label="item.name"
+                :value="item.name">
+                </el-option>
+            </el-select>
         </el-form-item>
-        <el-form-item label="账号" prop="username">
-          <el-input v-model="displayForm.username" autocomplete="off"></el-input>
+        <el-form-item label="游戏" prop="game">
+           <el-select v-model="displayForm.game" placeholder="请选择游戏">
+                <el-option
+                v-for="item in gameSelects"
+                :key="item.name"
+                :label="item.name"
+                :value="item.name">
+                </el-option>
+            </el-select>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input v-model="displayForm.password" autocomplete="off"></el-input>
+        <el-form-item label="星级" prop="star">
+            <div style="height:40px;display:flex;align-items:center">
+                <el-rate
+            v-model="displayForm.star"
+            show-text
+            text-color="white"
+            :texts="['差','差','良','良','优']"
+            :colors="colors"
+          ></el-rate>
+            </div>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-radio v-model="displayForm.sex" label="男"></el-radio>
-          <el-radio v-model="displayForm.sex" label="女"></el-radio>
-        </el-form-item>
-        <el-form-item label="邮箱" prop="email">
-          <el-input v-model="displayForm.email"></el-input>
-        </el-form-item>
-        <el-form-item label="签名" prop="autograph">
-          <el-input v-model="displayForm.autograph" maxlength="20" show-word-limit></el-input>
+        <el-form-item label="内容" prop="content">
+           <el-input v-model="displayForm.content" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -89,8 +112,10 @@
       direction="rtl"
       size="50%"
      >
-      <div style="overflow:auto;height:88vh;background:rgba(0,0,0,0.2);margin:0 10px;padding:0 10px">
-        <div style="" v-for="(item,key) in drawerForm.table" :key="key">
+      <div
+        style="overflow:auto;height:88vh;background:rgba(0,0,0,0.2);margin:0 10px;padding:0 10px"
+      >
+        <div style v-for="(item,key) in drawerForm.table" :key="key">
           <el-divider content-position="left">{{key}}</el-divider>
           <el-row>
             <el-col :span="5">
@@ -126,16 +151,60 @@ export default {
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
       drawerDisplay: false,
       drawerForm: {},
+      drawerData: {
+        1: {
+          模型操作: {
+            最高分: 56,
+            最低分: 11,
+            评论: [
+              { star: 5, content: "是真的好玩" },
+              { star: 1, content: "好像有点bug" }
+            ]
+          },
+          飞机大战: {
+            最高分: 342,
+            最低分: 111,
+            评论: [
+              { star: 5, content: "游戏设计蛮不错的" },
+              { star: 5, content: "很棒很棒" },
+              { star: 5, content: "好刺激呀！！！！" }
+            ]
+          },
+          连连看: {
+            最高分: 56,
+            最低分: 11,
+            评论: [{ star: 3, content: "还可以" }]
+          }
+        },
+        2: {
+          模型操作: {
+            最高分: 44,
+            最低分: 5,
+            评论: [
+              { star: 3, content: "可以可以" },
+              { star: 1, content: "结束设置的不行" }
+            ]
+          },
+          飞机大战: {
+            最高分: 1234,
+            最低分: 11,
+            评论: [
+              { star: 5, content: "打击感蛮好的！！" },
+              { star: 3, content: "爽啊！！！！" }
+            ]
+          }
+        }
+      },
       displayText: null,
       display: false,
       displayForm: {
         sex: "男"
       },
       rules: {
-        name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-        username: [{ required: true, message: "请输入账号", trigger: "blur" }],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        email: [{ required: true, message: "请输入邮箱", trigger: "blur" }]
+        name: [{ required: true, message: "请选择用户", trigger: "blur" }],
+        game: [{ required: true, message: "请选择游戏", trigger: "blur" }],
+        star: [{ required: true, message: "请选择星级", trigger: "blur" }],
+        content: [{ required: true, message: "请输入内容", trigger: "blur" }]
       },
       nowData: [],
       nowDatePage: {
@@ -146,12 +215,15 @@ export default {
     };
   },
   computed:{
-    tableDate(){
-      return this.$store.state.userList;
-    },
-    drawerData(){
-      return this.$store.state.userCommentList;
-    }
+      tableDate(){
+          return this.$store.state.commentList;
+      },
+      userSelects(){
+          return this.$store.state.userList;
+      },
+      gameSelects(){
+          return this.$store.state.gameList;
+      }
   },
   mounted() {
     this.handleCurrentChange();
@@ -169,12 +241,22 @@ export default {
           throw "输入非法";
         }
       });
-      if (this.displayText == "添加用户") {
+      if (this.displayText == "添加评论") {
         let createTime = new Date();
-        let month = (createTime.getMonth()+1)<10?'0'+(createTime.getMonth()+1):(createTime.getMonth()+1);
-        let day = (createTime.getDate())<10?'0'+(createTime.getDate()):(createTime.getDate());
+        let month =
+          createTime.getMonth() + 1 < 10
+            ? "0" + (createTime.getMonth() + 1)
+            : createTime.getMonth() + 1;
+        let day =
+          createTime.getDate() < 10
+            ? "0" + createTime.getDate()
+            : createTime.getDate();
         createTime = `${createTime.getFullYear()}-${month}-${day}`;
-        this.tableDate.push({ ...this.displayForm, id: new Date().getTime(),createTime:createTime });
+        this.tableDate.push({
+          ...this.displayForm,
+          id: new Date().getTime(),
+          createTime: createTime
+        });
         this.$notify({
           title: "添加成功",
           type: "success"
@@ -199,7 +281,7 @@ export default {
         this.tableDate.forEach(item => {
           if (
             item.name.indexOf(this.formName) != -1 ||
-            item.email.indexOf(this.formName) != -1
+            item.game.indexOf(this.formName) != -1
           ) {
             this.nowData.push(item);
           }
@@ -217,7 +299,7 @@ export default {
     },
     delUser(row) {
       this.$confirm(
-        `此操作将永久删除{${row.name}}用户, 是否继续?`,
+        `此操作将永久删除{${row.name}}用户的评论, 是否继续?`,
         "用户删除",
         {
           confirmButtonText: "确定",
@@ -225,7 +307,7 @@ export default {
           type: "warning"
         }
       ).then(() => {
-        this.$store.state.userList = this.$store.state.userList.filter(item => {
+        this.$store.state.commentList = this.$store.state.commentList.filter(item => {
           return item.id != row.id;
         });
         this.handleCurrentChange();

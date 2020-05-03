@@ -4,13 +4,12 @@
     data-wow-duration="0.5s"
   >
     <div class="left">
-      <game-tab game="飞机大战"></game-tab>
-      <!-- <comment></comment> -->
+      <game-tab game="连连看"></game-tab>
     </div>
     <div class="right">
       <iframe
         class="game"
-        src="http://47.94.216.36:8080/plane/panle.html"
+        src="http://47.94.216.36:8080/KeepLook/index.html"
         frameborder="0"
         scrolling="auto"
       ></iframe>
@@ -20,33 +19,15 @@
 <script>
 import { computed, reactive } from "@vue/composition-api";
 import GameTab from "@/components/GameTab.vue";
-//import comment from "@/components/comment.vue";
 export default {
   name: "manup",
   components: {
     GameTab
-    //comment
   },
   setup(props, { root }) {
     const gameactive = computed(() => root.$store.state.gamechangeActive);
-    const rankingList = reactive([
-      { name: "小明", grade: 999999999 },
-      { name: "AAAA", grade: 100 },
-      { name: "loookooo", grade: 100 },
-      { name: "132123123112123123", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 },
-      { name: "小明", grade: 100 }
-    ]);
     return {
-      gameactive,
-      rankingList
+      gameactive
     };
   }
 };

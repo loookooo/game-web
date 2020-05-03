@@ -67,6 +67,26 @@ const routes = [
             },
             component: () => import("views/Game/Components/ManUp.vue"),
           },
+          {
+            path:'/gitBoard',
+            name: "推箱子",
+            meta: {
+              index: 1,
+              ix: "1-1",
+              keepAlive: true,
+            },
+            component: () => import("views/Game/Components/GitBoard.vue"),
+          },
+          {
+            path:'/keepLook',
+            name: "连连看",
+            meta: {
+              index: 1,
+              ix: "1-2",
+              keepAlive: true,
+            },
+            component: () => import("views/Game/Components/KeepLook.vue"),
+          }
         ],
       },
       {
