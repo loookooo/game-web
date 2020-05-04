@@ -382,6 +382,12 @@ export default new Vuex.Store({
 
     },
     getters: {
+      //获取对应游戏信息
+      getDetailByGame:state=> name => {
+        return state.gameList.filter(item=>{
+          return item.name == name;
+        })[0];
+      },
         //获取对应游戏排行榜
         getGradeByGame:state => (game) => {
             return state.gradeList.filter(item=>{

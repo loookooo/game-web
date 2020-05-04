@@ -7,7 +7,13 @@
       <game-tab game="打击板"></game-tab>
     </div>
     <div class="right">
-      <iframe
+      <div v-if="!start" style="text-align:center">
+        <h1>{{detail.name}}</h1>
+        <h3>{{detail.background}}</h3>
+        <div>{{detail.rule}}</div>
+        <el-button @click="start=true" size="small" style="margin-top:20px">进入游戏</el-button>
+      </div>
+      <iframe v-else
         class="game"
         src="http://47.94.216.36:8080/GitBoard/index.html"
         frameborder="0"
@@ -23,6 +29,16 @@ export default {
   name: "manup",
   components: {
     GameTab
+  },
+  data(){
+    return {
+      game:'打击板',
+      start:false,
+      detail:{  }
+    }
+  },
+  mounted(){
+    this.detail = this.$store.getters.getDetailByGame(this.game);
   },
   setup(props, { root }) {
     const gameactive = computed(() => root.$store.state.gamechangeActive);
@@ -53,6 +69,10 @@ export default {
     background-color: rgba(255, 255, 255, 0.5);
   }
   .right {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(#000,#000, #999, #000,#000);
     right: 0px;
     width: 1043px;
   }
